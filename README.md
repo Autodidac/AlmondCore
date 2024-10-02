@@ -20,7 +20,7 @@ Say goodbye to the traditional int main()—AlmondCore provides a built-in entry
 #### Foundation of AlmondEngine
 AlmondCore serves as the backbone of AlmondEngine, a modular 3D graphics and game engine designed to be free and open-source under the (No Trademark Infringement and State Your Changes) Apache 2.0 license.
 
-#### Component Pattern-Based Design
+#### Multithreaded Task and Component Pattern-Based Hybrid Design
 Designed for extensibility, AlmondCore integrates a flexible Entity Component System (ECS). This allows for powerful agent-like behavior in C++ programs, providing more than enough functionality for game development and other complex systems.
 
 #### Minimalist, Functional Program Design
