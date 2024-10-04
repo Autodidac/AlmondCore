@@ -13,8 +13,6 @@ A highly flexible and scalable system where scenes are processed by independent 
 ### Thread-Safe, Multithreaded Task Handler
 AlmondCore is built for high-performance multithreading:
 - **Wait-Free Queue**: Handles task scheduling efficiently, reducing latency and overhead in multithreaded environments.
-- **Custom Spin Lock**: Inspired by WickedEngine's lock-free queue, further optimized for task management under high contention.
-- **Fiber-Based Scheduling (Planned)**: Future versions will include fiber-based threading, enhancing performance further.
 
 ### Hands-Free Entry Point System
 AlmondCore automates the entry point process. Rather than requiring a manual `int main()` function, the system handles initialization behind the scenes, allowing developers to focus on scene creation and task scheduling.
