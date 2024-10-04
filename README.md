@@ -2,7 +2,7 @@
 
 AlmondCore is the heart of AlmondEngine—a feature-complete, cross-platform, task and component-based entry point system. Built with modern C++20, it is designed for modularity, efficiency, and ease of use in cutting-edge game development and beyond.
 
-## AlmondEngine Overview
+## AlmondEngine 'Core' Overview
 The AlmondEngine is a modern, scalable, and data-oriented game engine designed to support efficient game development in 2024. It incorporates a variety of subsystems that work together to provide a powerful and flexible framework for creating games. Below are the key components and features of the engine:
 
 1. Entity Component System (ECS)
