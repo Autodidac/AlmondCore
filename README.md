@@ -40,17 +40,15 @@ Before you begin, ensure you have the following installed:
 ### Building AlmondCore
 
 1. **Clone the Repository**:
-   ```batch
+```bash
    git clone https://github.com/yourusername/AlmondCore.git
    cd AlmondCore
 ```
-```
-
 2. **Configure with CMake**:
    Depending on your platform and choice of backend (Vulkan or DirectX):
    
    - For **Vulkan**:
-     ```batch
+     ```bash
      cmake -S . -B build -D RENDERING_BACKEND=VULKAN
      ```
 
@@ -62,6 +60,6 @@ Before you begin, ensure you have the following installed:
    This will generate the appropriate build files for your platform.
 
 3. **Build the Project**:
-   ```batch
+   ```bash
    cmake --build build
 ```
