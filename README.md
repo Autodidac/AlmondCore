@@ -16,7 +16,7 @@ Dedicated Threads for Systems: Systems can run on dedicated threads, allowing fo
 3. Event Management
 Event Manager: This subsystem handles events and state changes within the game, supporting an event-driven architecture that decouples components from one another.
 Automated Event Handling: Events can be queued, and systems can respond to these events as they occur, allowing for dynamic game behavior without tight coupling.
-4. Advanced Task and Event-Driven Data-Oriented (DOD) OOP + Functional Programming Design
+4. Advanced Task and Event-Driven Data-Oriented (DOD) + OOP + Functional Programming Custom Hybrid Design
 Component Storage: Components are stored in a way that optimizes data locality, improving cache performance and reducing memory access latency.
 Separation of Data and Logic: This design principle ensures that the engine can efficiently manage large quantities of entities and components while maintaining high-performance execution.
 5. Modular and Extensible Architecture
@@ -57,7 +57,7 @@ AlmondCore automates the entry point process. Rather than requiring a manual `in
 ### Core of AlmondEngine
 As the foundation of AlmondEngine, AlmondCore provides the essential features for building a powerful, modular 3D game engine, licensed under Apache 2.0 for flexible, open-source use.
 
-### Advanced Task and Event-Driven Design
+### Advanced Task and Event-Driven Data-Oriented (DOD) + OOP + Functional Programming Custom Hybrid Design
 The engine combines task scheduling with an event-driven system to provide:
 - **Scene System**: Manage multiple scenes in parallel.
 - **Task Scheduler**: Dynamically distribute tasks across multiple threads.
