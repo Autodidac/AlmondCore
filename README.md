@@ -61,7 +61,7 @@ As the foundation of AlmondEngine, AlmondCore provides the essential features fo
 ### Advanced Task and Event-Driven Data-Oriented (DOD) + OOP + Functional Programming Hybrid Design
 The engine combines task scheduling with an event-driven system to provide:
 - **Scene System**: Manage multiple scenes in parallel.
-- **Task Scheduler**: Dynamically distribute tasks across multiple threads.
+- **Task Scheduler**: Dynamically distribute tasks across multiple threads. Thread Pooling, no .lock() Wait Free Queue Using Atomics for Multithreading.
 - **Event System**: Asynchronous event handling for optimal performance. Clever Stepping Save System with Compressed Binary Save Caching.
 - **Advanced Timing Mechanism**: Feature Complete Internal Timing, Perhaps a First of it's kind Intelligent Design.
 - **File I/O**: Efficient asset and data management.
