@@ -1,31 +1,37 @@
-# AlmondCore
-The heart of AlmondEngine, AlmondCore is a feature-complete, cross-platform task and component-based entry point system. It includes built-in stateless scene management designed to be modular, efficient, and user-friendly for modern C++20 projects.
 
-### Advanced Features
-Singleton-free, Modern C++20 Design
-AlmondCore avoids traditional singleton patterns in favor of a more functional and modern approach to C++20, allowing cleaner, more scalable code.
+AlmondCore
+AlmondCore is the heart of AlmondEngine—a feature-complete, cross-platform, task and component-based entry point system. It offers built-in stateless scene management designed for modularity, efficiency, and user-friendliness, tailored for modern C++20 projects.
 
-#### Stateless Scene System
-A system designed for flexibility and scalability, where scenes are processed by tasks instead of being tightly coupled with game logic, offering better separation of concerns.
+Key Features
+Modern, Singleton-Free C++20 Design
+AlmondCore eliminates traditional singleton patterns in favor of a more functional, modern C++20 approach. This results in cleaner, more scalable code, adhering to the best practices of contemporary C++ development.
 
-#### Thread-Safe, Multithreaded Task Handler
-Implimenting Fiber Technology - Naughty Dog Engine - https://www.youtube.com/watch?v=HIVBhKj7gQU
-WickedEngine uses Lock-Free Queue with Custom Spin Lock Thread Waits - Performant but we can do better! AlmondCore Currently Impliments a Custom Written Wait-Free Queue with Thread-Safe Task Scheduler (Moving beyond that to Thread-Fibers!)
-Execute tasks efficiently across multiple threads without worrying about thread safety, ensuring smooth performance in multi-core environments.
+Stateless Scene System
+A highly flexible and scalable system where scenes are processed by independent tasks, rather than being tightly coupled to game logic. This architecture improves separation of concerns, allowing for more modular scene management.
 
-#### Wait-Free, Thread Queue
-Achieve maximum efficiency with a wait-free thread queue, ideal for handling high-contention environments with minimal latency and overhead. (Testing indicates this would be most performant under maximum-contention cases (currently investigating Thread-Fibers))
+Thread-Safe, Multithreaded Task Handler
+AlmondCore leverages cutting-edge multithreading technology:
 
-#### Hands-Free Entry Point System
-Say goodbye to the traditional int main()—AlmondCore provides a built-in entry point, allowing you to focus on building scenes and processing tasks. Simply include the library, and the entry system handles the rest.
+Fiber Technology: Inspired by systems like Naughty Dog's game engine (see more).
+Custom Spin Lock: Similar to WickedEngine’s lock-free queue with custom spin-lock waits, but further optimized.
+Wait-Free Queue: AlmondCore currently implements a wait-free queue for efficient, thread-safe task scheduling, moving towards fiber-based threading for future versions.
+Wait-Free, High-Performance Thread Queue
+Built to handle high-contention environments, AlmondCore’s wait-free thread queue minimizes latency and overhead, ensuring peak performance in multithreaded applications—particularly useful in high-demand scenarios. Ongoing testing explores transitioning to fiber-based scheduling to push performance even further.
 
-#### Foundation of AlmondEngine
-AlmondCore serves as the backbone of AlmondEngine, a modular 3D graphics and game engine designed to be free and open-source under the (No Trademark Infringement and State Your Changes) Apache 2.0 license.
+Hands-Free Entry Point System
+No need for the traditional int main() entry point. AlmondCore provides a built-in entry system that handles initialization for you. Simply include the library and focus on creating scenes and tasks—the system takes care of the rest.
 
-#### Multithreaded Task Oriented, Event Centric, Component-Pattern Based Custom Hybrid Engine Design
-Designed for extensibility, AlmondCore integrates a flexible Entity Component System (ECS). This allows for powerful agent-like behavior in C++ programs, providing more than enough functionality for game development and other complex systems.
-Along with Component attachable Entities is the SceneSystem, Task Scheduler, EventSystem, Logging, Timing, and File-I/O operations and common utilities AlmondCore sports State-of-the-Art Technologies for Performance AND EFFICIANCY in an Ever Demanding Game Development Industry.
+Core of AlmondEngine
+AlmondCore serves as the foundation of AlmondEngine, a modular 3D game engine that is free and open-source, licensed under Apache 2.0. This makes it suitable for both hobbyists and professional developers seeking a robust engine for their projects.
 
-#### Minimalist, Functional Program Design
-AlmondCore emphasizes high efficiency and scalability without compromising user-friendliness. While the system may seem feature-rich, it is streamlined to ensure it operates efficiently even in demanding environments. The open-source, commercial-friendly licensing (Apache 2.0) allows developers to freely tailor the engine to their needs.
+Multithreaded, Task-Oriented, Event-Driven Hybrid Engine Design
+AlmondCore is designed for extensibility with a flexible Entity Component System (ECS). It provides powerful, agent-like behavior for complex systems, including game development. Core components include:
+
+Scene System: Manage multiple scenes with ease.
+Task Scheduler: Efficiently distribute tasks across multiple threads.
+Event System: Process events asynchronously for better performance.
+Logging and Timing: Built-in utilities for profiling and debugging.
+File I/O Operations: Handle assets and data efficiently.
+High Efficiency & Minimalist Design
+While feature-rich, AlmondCore remains streamlined to ensure high performance, even in demanding environments. Its minimalist, functional design makes it ideal for developers focused on scalability without unnecessary complexity. The open-source, commercial-friendly Apache 2.0 license allows for flexible customization and usage in both personal and professional projects.
 
