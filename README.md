@@ -2,6 +2,8 @@
 
 AlmondCore is the heart of AlmondEngine—a feature-complete, cross-platform, task and component-based entry point system. Built with modern C++20, it is designed for modularity, efficiency, and ease of use in cutting-edge game development and beyond.
 
+-----------
+
 ## AlmondEngine 'Core' Overview
 The AlmondEngine is a modern, scalable, and data-oriented game engine designed to support efficient game development in 2024. It incorporates a variety of subsystems that work together to provide a powerful and flexible framework for creating games. Below are the key components and features of the engine:
 
@@ -14,7 +16,7 @@ Dedicated Threads for Systems: Systems can run on dedicated threads, allowing fo
 3. Event Management
 Event Manager: This subsystem handles events and state changes within the game, supporting an event-driven architecture that decouples components from one another.
 Automated Event Handling: Events can be queued, and systems can respond to these events as they occur, allowing for dynamic game behavior without tight coupling.
-4. Data-Oriented Design
+4. TData-Oriented Design
 Component Storage: Components are stored in a way that optimizes data locality, improving cache performance and reducing memory access latency.
 Separation of Data and Logic: This design principle ensures that the engine can efficiently manage large quantities of entities and components while maintaining high-performance execution.
 5. Modular and Extensible Architecture
@@ -31,10 +33,11 @@ Behavior Trees/State Machines: Support for behavior trees or state machines can 
 9. Rendering and Graphics
 Renderer Module: The engine includes a rendering subsystem that can leverage modern graphics APIs (like Vulkan or DirectX 12) for high-quality graphics and effects.
 Post-Processing Effects: Support for advanced rendering techniques such as post-processing effects, particle systems, and shader management.
+
 #### Conclusion
 The AlmondEngine is a sophisticated game engine built on modern principles of software design, focusing on performance, scalability, and flexibility. By combining an ECS with advanced job systems, event management, and a modular architecture, it provides a powerful framework for game developers to create immersive and high-performance games in 2024. Its design is well-suited for the demands of contemporary game development, ensuring that developers can focus on crafting engaging experiences without being bogged down by performance constraints or architectural limitations.
 
-
+----------------------------------------
 
 ## Key Features of AlmondCORE
 
