@@ -24,9 +24,10 @@ No need for the traditional int main() entry point. AlmondCore provides a built-
 ### Core of AlmondEngine
 AlmondCore serves as the foundation of AlmondEngine, a modular 3D game engine that is free and open-source, licensed under Apache 2.0. This makes it suitable for both hobbyists and professional developers seeking a robust engine for their projects.
 
-### Multithreaded, Task-Oriented, Event-Driven Hybrid Engine Design
-AlmondCore is designed for extensibility with a flexible Entity Component System (ECS). It provides powerful, agent-like behavior for complex systems, including (But NOT limited to) game development. Core components include:
+### Advanced Multithreading, Task-and-Event Driven Hybrid Engine Design
+AlmondCore is designed for extensibility with a flexible Entity Component System (ECS). It provides powerful, agent-like behavior for complex systems, including (But NOT limited to) game development. 
 
+#### Core components include:
 - Scene System: Manage multiple scenes with ease.
 - Task Scheduler: Efficiently distribute tasks across multiple threads.
 - Event System: Process events asynchronously for better performance.
