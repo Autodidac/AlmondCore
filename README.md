@@ -16,7 +16,7 @@ Dedicated Threads for Systems: Systems can run on dedicated threads, allowing fo
 3. Event Management
 Event Manager: This subsystem handles events and state changes within the game, supporting an event-driven architecture that decouples components from one another.
 Automated Event Handling: Events can be queued, and systems can respond to these events as they occur, allowing for dynamic game behavior without tight coupling.
-4. TData-Oriented Design
+4. Advanced Task and Event-Driven Data-Oriented (DOD) OOP + Functional Programming Design
 Component Storage: Components are stored in a way that optimizes data locality, improving cache performance and reducing memory access latency.
 Separation of Data and Logic: This design principle ensures that the engine can efficiently manage large quantities of entities and components while maintaining high-performance execution.
 5. Modular and Extensible Architecture
