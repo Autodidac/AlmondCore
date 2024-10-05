@@ -1,6 +1,6 @@
 # AlmondCore
 
-AlmondCore - The Heart of the AlmondEngine is a "Feature Complete" Cross-platform OS Entry-Point System with Data-Oriented, Functional/OOP Hybrid, Task and Event Driven Component based Architecture with built-in Stateless Scene Management, ECS, and more. Built with contemporart principles with C++20, it is designed for modularity, efficiency, and ease of use in cutting-edge software development and beyond. For Graphics Rendering see AlmondEngine or AlmondShell.
+AlmondCore - The Heart of the AlmondEngine is a "Feature Complete" Cross-platform OS Entry-Point System with Data-Oriented, Functional/OOP Hybrid, Task and Event Driven Component based Architecture with built-in Stateless Scene Management, ECS, and more. Built with contemporart principles with C++20, it is designed for modularity, efficiency, and ease of use in cutting-edge software development and beyond. For Graphics Rendering see AlmondEngine or AlmondShell. AlmondCore is a Modern Software Development Suite which aims to be as minimal as possible and also features a header only mostly functional programming design to reduce overhead.
 
 -----------
 
