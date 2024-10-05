@@ -89,7 +89,7 @@ The engine combines task scheduling with an event-driven system to provide:
 - **Advanced Timing Mechanism**: Feature Complete Internal Timing, Perhaps a First of it's kind Intelligent Design.
 - **File I/O**: Efficient asset and data management.
 
-
+------
 
 ## Getting Started Using Almond Core
 
