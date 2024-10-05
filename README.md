@@ -53,33 +53,33 @@ The AlmondEngine is a sophisticated game engine built on modern principles of so
 
 ## Key Features of AlmondCore
 
----
+
 
 ### Modern, Singleton-Free C++20 Design
 AlmondCore eliminates the need for singleton patterns in favor of a modern, functional C++20 approach. This results in scalable and maintainable code, aligning with best practices for contemporary C++ projects.
 
----
+
 
 ### Stateless Scene System
 A highly flexible and scalable system where scenes are processed by independent tasks, rather than being tightly coupled with game logic. This separation ensures better modularity and allows for efficient scene management.
 
----
+
 
 ### Thread-Safe, Multithreaded Task Handler
 AlmondCore is built for high-performance multithreading:
 - **Wait-Free Queue**: Handles task scheduling efficiently, reducing latency and overhead in multithreaded environments.
 
----
+
 
 ### Hands-Free Entry Point System
 AlmondCore automates the entry point process. Rather than requiring a manual `int main()` function, the system handles initialization behind the scenes, allowing developers to focus on scene creation and task scheduling.
 
----
+
 
 ### Core of AlmondEngine
 As the foundation of AlmondEngine, AlmondCore provides the essential features for building a powerful, modular 3D game engine, licensed under Apache 2.0 for flexible, open-source use.
 
----
+
 
 ### Advanced Task and Event-Driven Data-Oriented (DOD) + OOP + Functional Programming Hybrid Design
 The engine combines task scheduling with an event-driven system to provide:
@@ -89,7 +89,7 @@ The engine combines task scheduling with an event-driven system to provide:
 - **Advanced Timing Mechanism**: Feature Complete Internal Timing, Perhaps a First of it's kind Intelligent Design.
 - **File I/O**: Efficient asset and data management.
 
----
+
 
 ## Getting Started
 
