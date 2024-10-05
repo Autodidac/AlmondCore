@@ -143,10 +143,10 @@ cd examples
 ```
 
 ### License
-AlmondCore is licensed under the Apache 2.0 License. See the LICENSE file for more details.
+   AlmondCore is licensed under the Apache 2.0 License. See the LICENSE file for more details.
 
 ### Contributing
-Contributions are welcome! Please feel free to submit a pull request or open an issue.
+   Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
 ### Getting Help
-If you have any questions or need help, feel free to open an issue on the GitHub repository or reach out to the community.
+   If you have any questions or need help, feel free to open an issue on the GitHub repository or reach out to the community.
