@@ -72,8 +72,7 @@ The engine combines task scheduling with an event-driven system to provide:
 ### Prerequisites
 Before you begin, ensure you have the following installed:
 - C++20 compatible compiler (e.g., MSVC 2019+, GCC 10+, Clang 10+)
-- CMake 3.20+
-- (Optional) Vulkan SDK or DirectX SDK, depending on the rendering backend
+- CMake 3.20+ (Optional) 
 
 ### Building AlmondCore
 
