@@ -112,8 +112,8 @@ cmake ..
 ##### **Build the Project**:
 ```bash
 cmake --build . --config Release
-Run the Examples (if provided):
 ```
+##### Run the Examples:
 ```bash
 cd examples
 ./example_project
