@@ -47,7 +47,7 @@ The AlmondEngine is a sophisticated game engine built on modern principles of so
 
 ----------------------------------------
 
-## Key Features of AlmondCORE
+## Key Features of AlmondCore
 
 ### Modern, Singleton-Free C++20 Design
 AlmondCore eliminates the need for singleton patterns in favor of a modern, functional C++20 approach. This results in scalable and maintainable code, aligning with best practices for contemporary C++ projects.
