@@ -1,4 +1,4 @@
-<img align="left" src="images/1.jpg" width="100px"/>
+<img align="left" src="images/1.jpg" width="80px"/>
 
 # AlmondCore
 
