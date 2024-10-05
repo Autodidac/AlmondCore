@@ -1,4 +1,4 @@
-<img align="left" src="images/1.jpg" width="80px"/>
+<img align="left" src="images/1.jpg" width="70px"/>
 
 # AlmondCore
 
@@ -7,7 +7,7 @@
 ## AlmondCore - The Heart of the AlmondEngine is a "Feature Complete" Cross-platform OS Entry-Point System with Data-Oriented, Functional/OOP Hybrid, Task and Event Driven Component based Architecture with built-in Stateless Scene Management, ECS, and more.
 
 Built with contemporary design principles and using C++20, it is designed for modularity, efficiency, and ease of use on current OS hardware for bleeding-edge software development and beyond. For Graphics Rendering Capabilities see AlmondEngine or AlmondShell. AlmondCore is a Modern Software Development Suite which aims to be as minimal as possible and also features a header only mostly functional programming design to reduce overhead.
-<img align="left" src="images/gpt.jpg" width="40px"/>GPT-4
+<img align="left" src="images/gpt.jpg" width="50px"/>GPT-4
 
 -----------
 
