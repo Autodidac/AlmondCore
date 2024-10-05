@@ -91,7 +91,7 @@ The engine combines task scheduling with an event-driven system to provide:
 
 
 
-## Getting Started
+## Getting Started Using Almond Core
 
 ### Prerequisites
 Before you begin, ensure you have the following installed:
