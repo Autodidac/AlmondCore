@@ -105,11 +105,11 @@ Before you begin, ensure you have the following installed:
    mkdir build
    cd build
 ```
-**Run CMake**:
+##### **Run CMake**:
 ```bash
 cmake ..
 ```
-**Build the Project**:
+##### **Build the Project**:
 ```bash
 cmake --build . --config Release
 Run the Examples (if provided):
@@ -119,11 +119,11 @@ cd examples
 ./example_project
 ```
 
-#### License
+### License
 AlmondCore is licensed under the Apache 2.0 License. See the LICENSE file for more details.
 
-#### Contributing
+### Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
-#### Getting Help
+### Getting Help
 If you have any questions or need help, feel free to open an issue on the GitHub repository or reach out to the community.
