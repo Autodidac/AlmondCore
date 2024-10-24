@@ -4,7 +4,7 @@
 
 
 
-## Almond Core - The Heart of the AlmondEngine is a x64 Cross-platform OS Entry-Point System with Data-Oriented, Functional/OOP Hybrid, Task and Event Driven Component based Architecture with built-in Stateless Scene Management, ECS, and more.
+## Almond Core - The Heart of the AlmondEngine is a x64 Cross-platform OS Entry-Point System, Software Development Suite, and Game Engine Core with Data-Oriented, Functional/OOP Hybrid, Task and Event Driven Component based Architecture with built-in Stateless Scene Management, ECS, and Much More!
 
 Built with contemporary design principles and using C++20, it is designed for modularity, efficiency, and ease of use on current OS hardware for bleeding-edge software development and beyond. For Graphics Rendering Capabilities see AlmondEngine or AlmondShell. AlmondCore is a Modern Software Development Suite which aims to be as minimal as possible and also features a header only mostly functional programming design to reduce overhead.
 
