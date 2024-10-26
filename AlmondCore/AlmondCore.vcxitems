@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{311ca3d3-081c-4e9a-99ee-60371c18b510}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Coroutine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\AlmondCore.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint_Android.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint_Crossplatform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint_Headless.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint_Wasm.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint_Win32.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint_X11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Exports_DLL.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\framework.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\InputSystem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ThreadPool.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Utilities.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\WaitFreeQueue.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint_Crossplatform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint_Headless.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint_Wasm.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint_Win32.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint_X11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\Exports_DLL.cpp" />
+  </ItemGroup>
+</Project>
