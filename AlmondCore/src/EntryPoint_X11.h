@@ -42,7 +42,6 @@ namespace almond {
         Display* display;
         Window entryPoint;
     };
-
 } // namespace almond
 
 #endif // __linux__

@@ -44,7 +44,7 @@ int main() {
     std::cout << "Running headless application...\n";
 
     // Initialize thread pool with available hardware concurrency minus 1 thread
-    ThreadPool threadPool(std::thread::hardware_concurrency() - 1);
+    almond::ThreadPool threadPool(std::thread::hardware_concurrency() - 1);
 
     // Example coroutine instances for different systems
     auto gameLogic = gameLogicCoroutine();

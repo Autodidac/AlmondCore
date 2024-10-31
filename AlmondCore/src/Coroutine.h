@@ -69,4 +69,5 @@ namespace almond {
     private:
         handle_type handle;
     };
-}
+} // namespace almond
+

@@ -5,6 +5,8 @@
 #include <optional>
 #include <iostream>
 
+namespace almond {
+
 template<typename T>
 class WaitFreeQueue {
 public:
@@ -75,3 +77,4 @@ template<typename T>
 bool WaitFreeQueue<T>::isEmpty() const {
     return head.load(std::memory_order_acquire) == tail.load(std::memory_order_acquire);
 }
+} // namespace almond

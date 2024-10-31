@@ -34,5 +34,4 @@ namespace almond {
         // Implementation to poll for events
         return true; // Modify according to actual event handling logic
     }
-
-}
+} // namespace almond

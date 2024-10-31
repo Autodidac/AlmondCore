@@ -15,4 +15,4 @@ namespace almond {
             return false;
         }
     };
-}
+} // namespace almond
