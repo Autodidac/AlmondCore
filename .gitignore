@@ -31,4 +31,9 @@
 *.out
 *.app
 
-almondengine/
+almondengine (depricated)/
+
+Example_Dll1/intermediate/
+Example_StaticLib1/intermediate/ 
+Example_WindowsProject1/intermediate/ 
+Example_ConsoleApplication/intermediate/ 
