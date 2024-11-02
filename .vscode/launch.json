@@ -5,7 +5,7 @@
       "name": "C++ MSBuild Debug",
       "type": "cppvsdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/bin/x64/Debug/Example_WindowsProject1.exe",  // Make sure this path matches your output directory
+      "program": "${workspaceFolder}/bin/x64/Debug/Example_ConsoleApplication.exe",  // Make sure this path matches your output directory
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

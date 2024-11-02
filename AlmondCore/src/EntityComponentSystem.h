@@ -7,7 +7,6 @@
 #include <iostream>
 
 namespace almond {
-
 class EntityComponentSystem {
 public:
     // Create an Entity with a unique ID and default position (0.0f, 0.0f)

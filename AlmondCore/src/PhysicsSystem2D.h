@@ -4,7 +4,6 @@
 #include "JobSystem.h"
 
 namespace almond {
-
 class PhysicsSystem {
 public:
     PhysicsSystem(ComponentManager& componentManager, JobSystem& jobSystem);

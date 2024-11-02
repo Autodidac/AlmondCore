@@ -1,4 +1,4 @@
-/* Start of file: MovementEvent.h */
+
 #pragma once
 
 #include <iostream>

@@ -8,8 +8,7 @@
 #include <android/native_activity.h>
 
 namespace almond {
-
-    class ENTRYPOINTLIBRARY_API AndroidEntryPoint : public EntryPoint_Crossplatform {
+    class AndroidEntryPoint : public EntryPoint_Crossplatform {
     public:
         void createEntryPoint(int width, int height, const char* title) override {
             // NativeActivity automatically creates an entry point, no direct setup is needed

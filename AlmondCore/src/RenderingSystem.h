@@ -4,7 +4,6 @@
 #include "JobSystem.h"
 
 namespace almond {
-
 class RenderingSystem {
 public:
     RenderingSystem(ComponentManager& componentManager, JobSystem& jobSystem);

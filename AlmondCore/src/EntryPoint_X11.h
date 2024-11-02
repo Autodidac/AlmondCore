@@ -7,7 +7,7 @@
 
 namespace almond {
 
-    class ENTRYPOINTLIBRARY_API X11EntryPoint : public EntryPoint_Crossplatform {
+    class X11EntryPoint : public EntryPoint_Crossplatform {
     public:
         void createEntryPoint(int width, int height, const char* title) override {
             display = XOpenDisplay(NULL);

@@ -8,7 +8,6 @@
 #include <utility>
 
 namespace almond {
-
 class Entity {
 public:
     // Default constructor

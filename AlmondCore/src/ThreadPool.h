@@ -9,7 +9,6 @@
 
 namespace almond 
 {
-
     class ThreadPool {
     public:
         explicit ThreadPool(size_t threadCount);

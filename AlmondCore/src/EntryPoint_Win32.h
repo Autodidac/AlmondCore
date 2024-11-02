@@ -11,9 +11,14 @@
 #ifndef _CONSOLE
 #include "framework.h"
 
+#ifdef _MSC_VER
+// Only for MSVC compilers
+#pragma warning(disable : 4251)
+#endif
+
 namespace almond {
 
-    class ENTRYPOINTLIBRARY_API Win32EntryPoint : public EntryPoint_Crossplatform {
+    class Win32EntryPoint : public EntryPoint_Crossplatform {
     public:
         using KeyCallback = std::function<void(WPARAM)>;  // Define a callback type for key input
 

@@ -10,3 +10,4 @@
 void fnExampleStaticLib1()
 {
 }
+

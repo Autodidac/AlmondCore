@@ -7,7 +7,6 @@
 #include <memory>
 
 namespace almond {
-
 // Renaming Entity type alias to EntityID to avoid conflict
 using EntityID = size_t;
 
@@ -33,5 +32,4 @@ T& ComponentManager::getComponent(EntityID entity) {
     assert(components[entity].count(std::type_index(typeid(T))) > 0 && "Component not found!");
     return *static_cast<T*>(components[entity][std::type_index(typeid(T))].get());
 }
-
 } // namespace almond

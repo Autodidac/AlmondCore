@@ -11,7 +11,7 @@
 
 namespace almond {
 
-    class ENTRYPOINTLIBRARY_API WasmEntryPoint : public EntryPointBase {
+    class WasmEntryPoint : public EntryPointBase {
     public:
         void createEntryPoint(int width, int height, const char* title) override {
             // Initialize WebGL or HTML5 canvas entry point here

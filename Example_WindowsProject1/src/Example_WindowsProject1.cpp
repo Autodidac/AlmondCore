@@ -6,6 +6,7 @@
 struct EntryPointInitializer {
     EntryPointInitializer() {
  
+
     }
 }init;
 

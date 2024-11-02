@@ -2,8 +2,8 @@
 #pragma once
 
 #ifdef _WIN32
-// To build Irrlicht as a static library, you must define _IRR_STATIC_LIB_ in both the
-// Irrlicht build, *and* in the user application, before #including <irrlicht.h>
+// To build Almond as a static library, you must define ENTRYPOINT_STATICLIB in both the
+// Almond build, *and* in the user application, before #including <AlmondCore.h>
     #ifndef ENTRYPOINT_STATICLIB
         #ifdef ENTRYPOINT_DLL_EXPORTS
             #define ENTRYPOINTLIBRARY_API __declspec(dllexport)
