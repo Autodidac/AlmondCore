@@ -22,7 +22,9 @@
         "/t:Build",
         "/p:Configuration=Debug",
         "/p:ConfigurationType=DynamicLibrary",
-        "/p:OutDir=${workspaceFolder}\\bin\\x64\\Debug\\"
+        "/p:OutDir=${workspaceFolder}\\bin\\x64\\Debug\\",
+        "/p:AdditionalLibraryDirectories=C:\\Users\\iammi\\Documents\\repos\\vcpkg\\installed\\x64-windows\\lib", // Path to zlib lib directory
+        "/p:AdditionalDependencies=zlib.lib" // Name of the zlib library to link
       ],
       "problemMatcher": ["$msCompile"],
       "group": { "kind": "build", "isDefault": false }
@@ -47,7 +49,9 @@
         "/property:GenerateFullPaths=true",
         "/t:Build",
         "/p:Configuration=Debug",
-        "/p:OutDir=${workspaceFolder}\\bin\\x64\\Debug\\"
+        "/p:OutDir=${workspaceFolder}\\bin\\x64\\Debug\\",
+        "/p:AdditionalLibraryDirectories=C:\\Users\\iammi\\Documents\\repos\\vcpkg\\installed\\x64-windows\\lib", // Path to zlib lib directory
+        "/p:AdditionalDependencies=zlib.lib" // Name of the zlib library to link
       ],
       "problemMatcher": ["$msCompile"],
       "group": { "kind": "build", "isDefault": false }
@@ -144,7 +148,7 @@
     },
     {
       "label": "Build All",
-      "dependsOrder": "parallel",
+      "dependsOrder": "sequence",
       "dependsOn": [
         "Build Static Library",
         "Build DLL",

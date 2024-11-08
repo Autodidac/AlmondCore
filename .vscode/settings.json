@@ -77,6 +77,7 @@
         "span": "cpp",
         "stack": "cpp",
         "typeindex": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "vcpkg.root": "C:\\Users\\iammi\\Documents\\repos\\vcpkg"
     }
 }

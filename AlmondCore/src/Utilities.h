@@ -3,9 +3,14 @@
 #pragma once
 
 // Crossplatform Console Check 
+#ifdef _WIN32
+
 #include "framework.h"
 
 #include <consoleapi3.h>
+#else
+// other platform includes
+#endif
 
 namespace almond
 {

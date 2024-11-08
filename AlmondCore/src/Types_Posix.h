@@ -1,7 +1,8 @@
 #pragma once
 
+#include "Types.h"  // Ensures almond types are defined, like uint32, uint16, uint64, etc.
+
 #include <cstddef>
-#include "AlmondTypes.h"  // Ensures almond types are defined, like uint32, uint16, uint64, etc.
 
 namespace almond {
     // Ensure 1-byte packing for consistent layout across platforms

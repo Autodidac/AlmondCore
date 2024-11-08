@@ -1,13 +1,15 @@
 #pragma once
 
 #include "WaitFreeQueue.h"
+#include "Exports_DLL.h"
 
 #include <atomic>
 #include <functional>
+#include <memory>     // Include for unique_ptr
 #include <thread>
 #include <vector>
 
-namespace almond 
+namespace almond
 {
     class ThreadPool {
     public:
@@ -17,52 +19,72 @@ namespace almond
         void enqueue(std::function<void()> job);
 
     private:
-        void workerThread(); // Worker function for threads
+        int workerThread(); // Worker function for threads
 
         std::vector<std::thread> workers; // Worker threads
-        WaitFreeQueue<std::function<void()>> jobQueue; // Job queue
-        std::atomic<bool> isRunning; // Running status
+        std::unique_ptr<WaitFreeQueue<std::function<void()>>> jobQueue; // Job queue
+        std::unique_ptr<std::atomic<bool>> isRunning; // Running status
     };
 
-    ThreadPool::ThreadPool(size_t threadCount)
-        : jobQueue(threadCount), isRunning(true) {
+    // ThreadPool constructor, destructor, and methods are defined inline in this header file.
+    inline ThreadPool::ThreadPool(size_t threadCount)
+        : jobQueue(std::make_unique<WaitFreeQueue<std::function<void()>>>(threadCount)),
+        isRunning(std::make_unique<std::atomic<bool>>(true)) {
         for (size_t i = 0; i < threadCount; ++i) {
             workers.emplace_back(&ThreadPool::workerThread, this);
         }
     }
 
-    ThreadPool::~ThreadPool() {
-        isRunning = false; // Signal all threads to stop
+    inline ThreadPool::~ThreadPool() {
+        *isRunning = false; // Signal all threads to stop
         for (auto& worker : workers) {
             worker.join(); // Wait for all worker threads to finish
         }
     }
 
-    void ThreadPool::enqueue(std::function<void()> job) {
-        jobQueue.enqueue(std::move(job)); // Enqueue the job
+    inline void ThreadPool::enqueue(std::function<void()> job) {
+        jobQueue->enqueue(std::move(job)); // Enqueue the job
     }
 
-    void ThreadPool::workerThread() {
-        while (isRunning) {
+    inline int ThreadPool::workerThread() {
+        while (*isRunning) {
             std::function<void()> job;
-            if (jobQueue.dequeue(job)) {  // Non-blocking dequeue
+            if (jobQueue->dequeue(job)) {  // Non-blocking dequeue
                 if (job) {
                     job();  // Execute the job
                 }
             }
             else {
-                // Yield CPU to other threads if no job is available
-                std::this_thread::yield();
+                std::this_thread::yield(); // Yield CPU if no job is available
             }
         }
 
-        // Flush remaining jobs before exiting
+        // Drain the job queue
         std::function<void()> job;
-        while (jobQueue.dequeue(job)) {
+        while (jobQueue->dequeue(job)) {
             if (job) {
-                job();  // Execute remaining job
+                job();  // Execute remaining jobs
             }
         }
+        return 0;
     }
 
 } // namespace almond
+/*
+// Export functions for DLL use
+extern "C" {
+
+    almond::ThreadPool* createThreadPool(size_t threadCount) {
+        return new almond::ThreadPool(threadCount);
+    }
+
+    void destroyThreadPool(almond::ThreadPool* pool) {
+        delete pool;
+    }
+
+    void enqueueJob(almond::ThreadPool* pool, std::function<void()> job) {
+        pool->enqueue(std::move(job));
+    }
+
+}
+*/

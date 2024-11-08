@@ -14,11 +14,14 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\AlmondTypes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\AlmondCore.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LoadSave.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Types.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Types_Posix.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Types_Win32.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ComponentManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Components.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Coroutine.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\AlmondCore.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Engine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\EntityComponentSystem.h" />
@@ -37,15 +40,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Logger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MovementEvent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\PhysicsSystem2D.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\posix_types.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\RenderingSystem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Scene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ThreadPool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\TimeKeeper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Utilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\WaitFreeQueue.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\windows_types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\AlmondCore.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LoadSave.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint_Crossplatform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\EntryPoint_Headless.cpp" />

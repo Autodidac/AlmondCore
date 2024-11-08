@@ -1,13 +1,13 @@
-#include "Coroutine.h"
+//#include "Coroutine.h"
 #include "EntryPoint.h"
 #include "EntryPoint_Headless.h"
-#include "ThreadPool.h"
+//#include "ThreadPool.h"
 
 #include <iostream>
-#include <thread>
-#include <chrono>
-#include <optional>
-
+//#include <thread>
+//#include <chrono>
+//#include <optional>
+/*
 // Coroutine function for game logic
 inline almond::Coroutine gameLogicCoroutine() {
     for (int i = 0; i < 5; ++i) {
@@ -39,13 +39,13 @@ inline almond::Coroutine gameSystemCoroutine() {
         co_yield i;
     }
 }
-
+*/
 int main() {
     std::cout << "Running headless application...\n";
 
     // Initialize thread pool with available hardware concurrency minus 1 thread
-    almond::ThreadPool threadPool(std::thread::hardware_concurrency() - 1);
-
+   // almond::ThreadPool threadPool(std::thread::hardware_concurrency() - 1);
+/*
     // Example coroutine instances for different systems
     auto gameLogic = gameLogicCoroutine();
     auto physics = physicsCoroutine();
@@ -84,7 +84,7 @@ int main() {
             }
 
             // Optionally, use thread pool for heavy tasks like loading resources
-            threadPool.enqueue([] {
+          threadPool.enqueue([] {
                 std::cout << "Heavy asset loading on thread." << std::endl;
                 std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Simulating work
                 });
@@ -94,5 +94,5 @@ int main() {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 
-    return 0;
+    return 0;*/
 }

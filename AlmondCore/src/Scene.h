@@ -23,17 +23,17 @@ namespace almond
         Scene(Scene&&) noexcept = default;
         Scene& operator=(Scene&&) noexcept = default;
 
-        void load() {
+        virtual void load() {
             std::cout << "Scene loaded.\n";
             loaded = true; // Assuming you set a flag when loading
         }
 
-        void unload() {
+        virtual void unload() {
             std::cout << "Scene unloaded.\n";
             loaded = false; // Reset the flag when unloading
         }
 
-        void printEntityPositions() {
+        virtual void printEntityPositions() {
             for (auto& entity : entities) {
                 entity->printPosition(); // Print position of each entity
             }
