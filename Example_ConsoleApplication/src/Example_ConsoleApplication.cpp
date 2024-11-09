@@ -44,7 +44,7 @@ void runFPSCounter(FPS& fpsCounter) {
     while (true) {
         fpsCounter.update();
         std::cout << "FPS: " << fpsCounter.getFPS() << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Adjust sleep time to avoid excessive logging
+       // std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Adjust sleep time to avoid excessive logging
     }
 }
 // Custom Scene Implementation

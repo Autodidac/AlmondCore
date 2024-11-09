@@ -52,7 +52,7 @@ bool WaitFreeQueue<T>::dequeue(T& item) {
 
     // Check if the queue is empty
     if (currentHead == tail.load(std::memory_order_acquire)) {
-        std::cerr << "Queue is empty!" << std::endl;
+        //std::cerr << "Queue is empty!" << std::endl;
         return false; // Queue empty
     }
 
