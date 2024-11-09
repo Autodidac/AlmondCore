@@ -150,3 +150,8 @@ cd examples
 
 ### Getting Help
 - If you have any questions or need help, feel free to open an issue on the GitHub repository or reach out to the community.
+
+
+### Parting Words
+- It is building and it is written in C++20, it only switched to C with that last commit because everything in it escapes name mangling and is DLL related, which is technically C code but it's also C++20.
+- because this is a barebones core of a game engine and mostly a beefed up entry point library all the build options and statistics will likely go a bit haywire, that is the "correct way" actually.
