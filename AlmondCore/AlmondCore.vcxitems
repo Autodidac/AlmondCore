@@ -22,7 +22,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ComponentManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Components.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Coroutine.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\Engine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SceneSnapshot.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\EntityComponentSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\EntryPoint.h" />

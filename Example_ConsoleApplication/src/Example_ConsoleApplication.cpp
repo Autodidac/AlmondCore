@@ -11,7 +11,7 @@
 int width = 800;
 int height = 600;
 const wchar_t* title = L"Almond Core Example";
-
+/*
 // FPS Class
 class FPS {
 private:
@@ -41,11 +41,12 @@ public:
 
 // FPS Counter Function
 void runFPSCounter(FPS& fpsCounter) {
-    while (true) {
+   // while (true) {
         fpsCounter.update();
-        std::cout << "FPS: " << fpsCounter.getFPS() << std::endl;
+        //system("cls");
+       // std::cout << "FPS: " << fpsCounter.getFPS() << std::endl;
        // std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Adjust sleep time to avoid excessive logging
-    }
+   // }
 }
 // Custom Scene Implementation
 struct NewScene : public almond::Scene {
@@ -64,17 +65,17 @@ struct NewScene : public almond::Scene {
         for (auto& t : threads) {
             t.join();
         }
- std::cout << "scene loaded\n";
+// std::cout << "scene loaded\n";
  }
   
- /*
-    void AddEntity(int entityId) override {
-        m_ecs.AddComponent(entityId, new almond::core::Position());
-        m_ecs.AddComponent(entityId, new almond::core::Velocity(1.0f, 1.0f));
-        m_entities.push_back(entityId);
-    }   */
+ 
+  //  void AddEntity(int entityId) override {
+  //      m_ecs.AddComponent(entityId, new almond::core::Position());
+  //      m_ecs.AddComponent(entityId, new almond::core::Velocity(1.0f, 1.0f));
+   //     m_entities.push_back(entityId);
+  //  }   
 };
-
+*/
 // Entry Point Initialization Structure
 struct myInitializer {
     myInitializer(int width, int height, const wchar_t* title) {
@@ -88,19 +89,26 @@ struct myInitializer {
 
         // Clean up the EntryPoint instance
        // almond::DestroyEntryPoint(entryPoint);
-
+/*
         NewScene scene;
-        size_t threadCount = std::thread::hardware_concurrency();
+        size_t threadCount = 1;
+        int maxBuffer = 100;
 
-       almond::AlmondCore* myAlmondCore = almond::CreateAlmondCore(threadCount, true, &scene);
-       // myAlmondCore.SetRunning(true);  // Set running state
+       almond::AlmondCore* myAlmondCore = almond::CreateAlmondCore(threadCount, true, &scene, maxBuffer);
+       //myAlmondCore->SetRunning(true);  // Set running state
 
         // Optional: Register callbacks here if needed
-        RegisterAlmondCallback([&scene]() { 
-            scene.load();
+        RegisterAlmondCallback([&scene]() {
+           // scene.load();
             });
-
-        almond::Run(*myAlmondCore);  // Start AlmondCore's main loop
+*/
+        //almond::Run(*myAlmondCore);  // Start AlmondCore's main loop
+     /*
+        if (almond::IsRunning(*myAlmondCore))
+        {
+            almond::PrintFPS(*myAlmondCore);
+        }*/
+        
     }
 };
 

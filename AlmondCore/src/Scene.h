@@ -10,7 +10,6 @@
 
 namespace almond 
 {
-
     class Scene {
     public:
         Scene() = default;
@@ -67,11 +66,15 @@ namespace almond
         // Clone method to create a copy of the scene
         std::unique_ptr<Scene> clone() const {
             auto newScene = std::make_unique<Scene>();
+
             for (const auto& entity : entities) {
-                newScene->addEntity(entity->clone()); // Assuming Entity has a clone method
+                if (entity) { // Check if the entity is not null
+                    newScene->addEntity(entity->clone()); // Assuming `clone()` returns a `std::unique_ptr<Entity>`
+                }
             }
             return newScene;
         }
+
 
         bool isLoaded() const { return loaded; } // Check if the scene is loaded
 

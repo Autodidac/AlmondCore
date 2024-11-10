@@ -1,23 +1,91 @@
 #include "AlmondCore.h"
 
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 #include <chrono>
 #include <thread>
+#include <shared_mutex>
 
-std::mutex callbackMutex;
-std::function<void(void)> m_updateCallback;
+// Mutex for callback thread safety
+std::shared_mutex callbackMutex;
+std::function<void()> m_updateCallback;
 
-void RegisterAlmondCallback(std::function<void(void)> callback) {
-    std::lock_guard<std::mutex> lock(callbackMutex);
+void RegisterAlmondCallback(const std::function<void()> callback) {
+    std::unique_lock lock(callbackMutex);
     m_updateCallback = callback;
 }
 
 namespace almond {
 
-    // Constructor definition inside DLL
-    AlmondCore::AlmondCore(size_t numThreads, bool running, Scene* scene)
+    AlmondCore::AlmondCore(size_t numThreads, bool running, Scene* scene, size_t maxBufferSize)
         : m_jobSystem(numThreads), m_running(running), m_scene(scene),
-        m_frameCount(0), m_lastSecond(std::chrono::steady_clock::now()) {}
+        m_frameCount(0), m_lastSecond(std::chrono::steady_clock::now()), m_maxBufferSize(maxBufferSize) {}
+
+    void AlmondCore::CaptureSnapshot() {
+        if (m_recentStates.size() >= m_maxBufferSize) {
+            m_recentStates.pop_front();
+        }
+
+        auto currentSceneState = m_scene->clone();
+        float timestamp = std::chrono::duration<float>(
+            std::chrono::steady_clock::now().time_since_epoch()).count();
+
+        m_recentStates.emplace_back(timestamp, std::move(currentSceneState));
+    }
+
+    void AlmondCore::SaveBinaryState() {
+        if (!m_recentStates.empty()) {
+            const SceneSnapshot& snapshot = m_recentStates.back();
+
+            try {
+                std::ofstream ofs("savegame.dat", std::ios::binary | std::ios::app);
+                if (!ofs) throw std::ios_base::failure("Failed to open save file.");
+
+                ofs.write(reinterpret_cast<const char*>(&snapshot), sizeof(SceneSnapshot));
+                ofs.close();
+            }
+            catch (const std::ios_base::failure& e) {
+                std::cerr << e.what() << std::endl;
+            }
+        }
+    }
+
+    void AlmondCore::SetPlaybackTargetTime(float targetTime) {
+        m_targetTime = targetTime;
+    }
+
+    void AlmondCore::UpdatePlayback() {
+        if (!m_recentStates.empty() && m_recentStates.front().timeStamp <= m_targetTime) {
+            for (const auto& snapshot : m_recentStates) {
+                if (snapshot.timeStamp >= m_targetTime) {
+                    m_scene = std::make_unique<Scene>(std::move(*snapshot.currentState));
+                    break;
+                }
+            }
+        }
+        else {
+            LoadStateAtTime(m_targetTime);
+        }
+    }
+
+    void AlmondCore::LoadStateAtTime(float timeStamp) {
+        try {
+            std::ifstream ifs("savegame.dat", std::ios::binary);
+            if (!ifs) throw std::ios_base::failure("Failed to open save file.");
+
+            SceneSnapshot snapshot;
+            while (ifs.read(reinterpret_cast<char*>(&snapshot), sizeof(SceneSnapshot))) {
+                if (snapshot.timeStamp >= timeStamp) {
+                    m_scene = std::make_unique<Scene>(std::move(*snapshot.currentState));
+                    break;
+                }
+            }
+        }
+        catch (const std::ios_base::failure& e) {
+            std::cerr << e.what() << std::endl;
+        }
+    }
 
     void AlmondCore::RunWin32Desktop(MSG msg, HACCEL hAccelTable) {
         auto lastFrame = std::chrono::steady_clock::now();
@@ -38,11 +106,10 @@ namespace almond {
                 }
             }
             else {
+                // Run the update callback in a thread-safe way
                 {
-                    std::lock_guard<std::mutex> lock(callbackMutex);
-                    if (m_updateCallback) {
-                        m_updateCallback();
-                    }
+                    std::shared_lock lock(callbackMutex);
+                    if (m_updateCallback) m_updateCallback();
                 }
 
                 if (std::chrono::duration_cast<std::chrono::minutes>(currentTime - lastSave).count() >= m_saveIntervalMinutes) {
@@ -66,86 +133,121 @@ namespace almond {
             auto currentTime = std::chrono::steady_clock::now();
 
             {
-                std::lock_guard<std::mutex> lock(callbackMutex);
-                if (m_updateCallback) {
-                    m_updateCallback();
-                }
+                std::shared_lock lock(callbackMutex);
+                if (m_updateCallback) m_updateCallback();
             }
 
             if (std::chrono::duration_cast<std::chrono::minutes>(currentTime - lastSave).count() >= m_saveIntervalMinutes) {
-                //Serialize("savegame.dat", m_events);
+                Serialize("savegame.dat", m_events);
                 lastSave = currentTime;
                 std::cout << "Game auto-saved." << std::endl;
             }
-            
+
+            CaptureSnapshot();
+
+            if (m_targetTime > 0.0f) {
+                UpdatePlayback();
+            }
+
             if (m_frameLimitingEnabled) {
                 LimitFrameRate(lastFrame);
             }
         }
     }
-    
-    void Run(AlmondCore& core) {
 
-        core.Run();
+    void AlmondCore::LimitFrameRate(std::chrono::steady_clock::time_point& lastFrame) {
+        auto frameDuration = std::chrono::milliseconds(1000 / m_targetFPS);
+        auto now = std::chrono::steady_clock::now();
+        auto timeSinceLastFrame = now - lastFrame;
+
+        if (timeSinceLastFrame < frameDuration) {
+            std::this_thread::sleep_for(frameDuration - timeSinceLastFrame);
+        }
+
+        lastFrame = std::chrono::steady_clock::now();
     }
 
-    // Factory function to create AlmondCore instance
-    AlmondCore* CreateAlmondCore(size_t numThreads, bool running, Scene* scene) {
-        return new AlmondCore(numThreads, running, scene);
+    void AlmondCore::UpdateFPS() {
+        m_frameCount++;
+        auto currentTime = std::chrono::steady_clock::now();
+        auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_lastSecond).count();
+
+        if (elapsedTime >= 1) {
+            m_fps = static_cast<float>(m_frameCount) / elapsedTime;
+            m_frameCount = 0;
+            m_lastSecond = currentTime;
+
+            std::cout << "Current FPS: " << std::fixed << std::setprecision(2) << m_fps << std::endl;
+        }
     }
 
-    //void RegisterAlmondCallback(std::function<void(void)> callback)
-   // {
-   // }
+    void AlmondCore::Serialize(const std::string& filename, const std::vector<Event>& events) {
+        try {
+            std::ofstream ofs(filename, std::ios::binary);
+            if (!ofs) throw std::ios_base::failure("Failed to open file for serialization");
+
+            size_t size = events.size();
+            ofs.write(reinterpret_cast<const char*>(&size), sizeof(size));
+            for (const auto& event : events) {
+                ofs.write(reinterpret_cast<const char*>(&event), sizeof(Event));
+            }
+        }
+        catch (const std::ios_base::failure& e) {
+            std::cerr << e.what() << std::endl;
+        }
+    }
+
+    void AlmondCore::Deserialize(const std::string& filename, std::vector<Event>& events) {
+        try {
+            std::ifstream ifs(filename, std::ios::binary);
+            if (!ifs) throw std::ios_base::failure("Failed to open file for deserialization");
+
+            size_t size;
+            ifs.read(reinterpret_cast<char*>(&size), sizeof(size));
+            events.resize(size);
+
+            for (auto& event : events) {
+                ifs.read(reinterpret_cast<char*>(&event), sizeof(Event));
+            }
+        }
+        catch (const std::ios_base::failure& e) {
+            std::cerr << e.what() << std::endl;
+        }
+    }
+
+    void AlmondCore::PrintOutFPS() {
+        std::cout << "Average FPS: " << std::fixed << std::setprecision(2) << m_fps << std::endl;
+    }
+
+    bool AlmondCore::IsItRunning() const {
+        return m_running;
+    }
 
     void AlmondCore::SetRunning(bool running) {
         m_running = running;
     }
 
-    bool AlmondCore::IsRunning() const {
-        return m_running;
-    }
-
     void AlmondCore::SetFrameRate(unsigned int targetFPS) {
         m_targetFPS = targetFPS;
-        m_frameLimitingEnabled = true;
+        m_frameLimitingEnabled = (m_targetFPS > 0);
     }
 
-    void AlmondCore::UpdateFPS() {
-        m_frameCount++;
-        auto now = std::chrono::steady_clock::now();
-        m_totalTime += std::chrono::duration_cast<std::chrono::milliseconds>(now - m_lastFrame).count();
-        m_lastFrame = now;
-
-        if (m_totalTime > 1000) {
-            m_fps = static_cast<float>(m_frameCount) / (m_totalTime / 1000.0f);
-            m_totalTime = 0.0f;
-            m_frameCount = 0;
-            m_lastSecond = now;
-        }
+    // External entry points
+    AlmondCore* CreateAlmondCore(size_t numThreads, bool running, Scene* scene, size_t maxBufferSize) {
+        return new AlmondCore(numThreads, running, scene, maxBufferSize);
     }
 
-    void AlmondCore::PrintFPS() const {
-        std::cout << "Current FPS: " << m_fps << std::endl;
+    void Run(AlmondCore& core) {
+        core.Run();
     }
 
-    void AlmondCore::LimitFrameRate(std::chrono::steady_clock::time_point& lastFrame) {
-        auto now = std::chrono::steady_clock::now();
-        auto frameDuration = now - lastFrame;
-        auto targetFrameDuration = std::chrono::milliseconds(1000 / m_targetFPS);
-
-        if (frameDuration < targetFrameDuration) {
-            std::this_thread::sleep_for(targetFrameDuration - frameDuration);
-        }
-        lastFrame = now;
+    bool IsRunning(AlmondCore& core) {
+        return core.IsItRunning();
     }
 
-    void AlmondCore::Serialize(const std::string& filename, const std::vector<Event>& events) {
-        m_saveSystem.SaveGame(filename, events);
-    }
-
-    void AlmondCore::Deserialize(const std::string& filename, std::vector<Event>& events) {
-        m_saveSystem.LoadGame(filename, events);
+    void PrintFPS(AlmondCore& core) {
+        core.PrintOutFPS();
     }
 
 } // namespace almond
+

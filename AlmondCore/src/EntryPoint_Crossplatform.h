@@ -20,7 +20,7 @@ namespace almond {
         virtual bool pollEvents() = 0;
 
         // Factory method to create platform-specific entry points
-        [[nodiscard]] std::unique_ptr<EntryPoint_Crossplatform> create(); // Exported static method for creating instances
+        [[nodiscard]] std::unique_ptr<EntryPoint_Crossplatform> create(); 
     };
 
 } // namespace almond
