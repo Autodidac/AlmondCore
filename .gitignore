@@ -40,3 +40,5 @@ Example_WindowsProject1/intermediate/
 Example_ConsoleApplication/intermediate/ 
 
 .vs/
+
+Example_CMake_Project1/obj/x64/
